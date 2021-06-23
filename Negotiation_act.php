@@ -22,6 +22,12 @@ $stmt->bindValue(':My_id', $My_id, PDO::PARAM_STR);
 $stmt->bindValue(':Target_id', $Target_id, PDO::PARAM_STR);
 $status = $stmt->execute();
 
+if ($status == false) {
+    $error = $stmt->errorInfo();
+    echo json_encode(["Target_id_error_msg" => "{$error[2]}"]);
+    exit();
+}
+
 // 自分の商品情報のis_statusを１（他ユーザーに交換依頼中）に、tradeItem_idを相手の商品idに更新
 $sql = "UPDATE item_table SET is_status=1 , tradeItem_id = :Target_id WHERE id=:My_id";
 
@@ -32,7 +38,7 @@ $status = $stmt->execute();
 
 if ($status == false) {
     $error = $stmt->errorInfo();
-    echo json_encode(["error_msg" => "{$error[2]}"]);
+    echo json_encode(["My_id_error_msg" => "{$error[2]}"]);
     exit();
 } else {
     header("Location:Negotiation_finish.php");
