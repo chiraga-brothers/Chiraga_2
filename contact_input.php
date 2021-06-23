@@ -27,8 +27,7 @@ if ($status == false) {
 <head>
     <meta charset="UTF-8">
     <title>お問い合わせ</title>
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="contact.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
@@ -38,41 +37,37 @@ if ($status == false) {
     <div>
         <form action="contact_confirm.php" method="POST">
             <div>
-                <h3>お客様情報</h3>
                 <table>
                     <tbody>
                         <tr>
                             <td>お名前 : </td>
-                            <td><?= $result['user_name'] ?>様</td>
-                            <input type="hidden" name="user_name" value="<?= $result['user_name'] ?>">
+                            <td><input type="text" name="user_name" value="<?= $result['user_name'] ?>"></td>
                         </tr>
                         <tr>
                             <td>メールアドレス : </td>
-                            <td><?= $result['mail'] ?></td>
-                            <input type="hidden" name="mail" value="<?= $result['mail'] ?>">
+                            <td><input type="text" name="mail" value="<?= $result['mail'] ?>"></td>
+                        </tr>
+                        <tr>
+                            <td>カテゴリ : </td>
+                            <td><select name="content_title">
+                                    <option value="">項目を選択してください</option>
+                                    <option value="アカウントについて">アカウントについて</option>
+                                    <option value="発送方法について">発送方法について</option>
+                                    <option value="退会について">退会について</option>
+                                    <option value="その他">その他</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>お問合せ内容</td>
+                            <td><textarea name="content" rows="5" placeholder="内容を入力" type="text"></textarea></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p>お客様情報に誤りがある場合は<a href="edit.php?id=<?= $user_id ?>">こちら</a>からアカウント情報を編集できます</p>
-            <p>お問い合わせ内容をご入力の上、「確認画面へ」ボタンをクリックしてください。</p>
-            <div>
-                <label>お問い合わせ内容<span>必須</span></label>
-                <select name="content_title">
-                    <option value="">項目を選択してください</option>
-                    <option value="アカウントについて">アカウントについて</option>
-                    <option value="発送方法について">発送方法について</option>
-                    <option value="退会について">退会について</option>
-                    <option value="その他">その他</option>
-                </select>
-            </div>
-            <div>
-                <textarea name="content" rows="5" placeholder="内容を入力" type="text"></textarea>
-            </div>
     </div>
     <button type="submit">確認画面へ</button>
-    <a href="login.php">ログイン</a>
     </form>
+    <p>アカウント情報の変更は<a href="edit.php?id=<?= $user_id ?>">こちら</a></p>
     </div>
 </body>
 
