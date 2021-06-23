@@ -49,8 +49,8 @@ if ($status == false) {
 
 <body>
   <p>現在のユーザー [<?= $user_name ?>]</p>
+  <a href="my_page.php">マイページへ</a>
   <a href="List.php">他のユーザーの出品商品一覧ページへ</a>
-  <a href="My_account.php">マイアカウント</a>
   <fieldset>
     <legend>自分の出品商品 一覧</legend>
     <a href="Item_input.php">新規出品</a>

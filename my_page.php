@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("functions.php");
-// check_session_id();
+check_session_id();
 $pdo = connect_to_db();
 
 $user_name = $_SESSION['user_name'];
@@ -25,7 +25,6 @@ if ($status == false) {
   $user_output .= "<div>住所：{$result["address"]}</div>";
   $user_output .= "<div>電話番号：{$result["phone"]}</div>";
 }
-
 
 // 自分の出品情報をDBから取得
 $sql = 'SELECT * FROM item_table WHERE owner_id = :id';
@@ -70,8 +69,12 @@ if ($status == false) {
 
 <body>
   <p>現在のユーザー [<?= $user_name ?>]</p>
-  <a href="List.php">他のユーザーの出品商品一覧ページへ</a>
   <a href="My_account.php">マイアカウント</a>
+  <a href="My_list.php">マイリスト</a>
+  <a href="List.php">他のユーザーの出品商品一覧ページへ</a>
+  <a href="contact_input.php">コンタクトページへ</a>
+  <a href="trade_request.php">交換依頼がきています！！！</a>
+
   <fieldset>
     <legend>自分の登録情報</legend>
     <a href="log_out.php">ログアウト</a>
@@ -85,7 +88,6 @@ if ($status == false) {
   <fieldset>
     <legend>自分の出品商品 一覧</legend>
     <a href="Item_input.php">新規出品</a>
-    <a href="log_out.php">ログアウト</a>
     <table>
       <thead>
         <tr>

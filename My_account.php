@@ -42,7 +42,8 @@ if ($status == false) {
 
 <body>
   <p>現在のユーザー [<?= $user_name ?>]</p>
-  <a href="My_page.php">他のユーザーの出品商品一覧ページへ</a>
+  <a href="my_page.php">マイページへ</a>
+  <a href="User_edit.php?id=<?= $user_id ?>">アカウント情報の編集</a>
   <fieldset>
     <legend>自分の登録情報</legend>
     <a href="Item_input.php">新規出品</a>
