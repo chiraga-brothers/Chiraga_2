@@ -18,6 +18,7 @@ if ($status == false) {
   exit();
 } else {
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user_image = $result['user_image'];
   $output = "";
   $output .= "<div>ユーザー名：{$result["user_name"]}</div>";
   $output .= "<div>メールアドレス：{$result["mail"]}</div>";
@@ -41,7 +42,7 @@ if ($status == false) {
 </head>
 
 <body>
-  <p>現在のユーザー [<?= $user_name ?>]</p>
+  <img src="<?= $user_image ?>" height=150px>
   <a href="my_page.php">マイページへ</a>
   <a href="User_edit.php?id=<?= $user_id ?>">アカウント情報の編集</a>
   <fieldset>

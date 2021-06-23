@@ -1,14 +1,13 @@
 <?php
-// フォームのボタンが押されたら
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // フォームから送信されたデータを各変数に格納
-    $user_name = $_POST["user_name"];
-    $mail = $_POST["mail"];
-    $password = $_POST["password"];
-    $address = $_POST["address"];
-    $phone = $_POST["phone"];
-}
+
+$user_name = $_POST["user_name"];
+$mail = $_POST["mail"];
+$password = $_POST["password"];
+$address = $_POST["address"];
+$phone = $_POST["phone"];
 ?>
+
+
 <html lang="ja">
 
 <head>
@@ -54,6 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label>電話番号</label>
                     <p><?php echo $phone; ?></p>
                 </div>
+
+                <img src='<?= $filename_to_save ?>'>
             </div>
             <input type="button" value="内容を修正する" onclick="history.back(-1)">
             <button type="submit" name="submit">送信する</button>
