@@ -14,16 +14,15 @@ if (
     exit('Param Error');
 }
 
-
-
 $user_name = $_POST["user_name"];
 $mail = $_POST["mail"];
 $password = $_POST["password"];
 $address = $_POST["address"];
 $phone = $_POST["phone"];
+$user_image = "userimg/default_user.png";
 
 
-$sql = 'INSERT INTO users_table (id, user_name, mail, password, address, phone, created_at, updated_at)VALUES  (NULL, :user_name, :mail, :password, :address, :phone, sysdate(), sysdate())';
+$sql = 'INSERT INTO users_table (id, user_name, mail, password, address, phone, user_image, created_at, updated_at)VALUES  (NULL, :user_name, :mail, :password, :address, :phone, :user_image, sysdate(), sysdate())';
 
 
 $stmt = $pdo->prepare($sql);
@@ -32,6 +31,7 @@ $stmt->bindValue(':mail', $mail, PDO::PARAM_STR);
 $stmt->bindValue(':password', $password, PDO::PARAM_STR);
 $stmt->bindValue(':address', $address, PDO::PARAM_STR);
 $stmt->bindValue(':phone', $phone, PDO::PARAM_STR);
+$stmt->bindValue(':user_image', $user_image, PDO::PARAM_STR);
 $status = $stmt->execute();
 
 if ($status == false) {

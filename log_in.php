@@ -28,7 +28,7 @@
                <div>
                    <button>Login</button>
                </div>
-               <a href="sigh_up.php">新規登録</a>
+               <a href="sign_up.php">新規登録</a>
            </fieldset>
        </form>
 

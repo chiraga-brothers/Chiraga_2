@@ -19,6 +19,7 @@ if ($status == false) {
   exit();
 } else {
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user_image = $result['user_image'];
   $user_output = "";
   $user_output .= "<div>ユーザー名：{$result["user_name"]}</div>";
   $user_output .= "<div>メールアドレス：{$result["mail"]}</div>";
@@ -68,7 +69,7 @@ if ($status == false) {
 </head>
 
 <body>
-  <p>現在のユーザー [<?= $user_name ?>]</p>
+  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <a href="My_account.php">マイアカウント</a>
   <a href="My_list.php">マイリスト</a>
   <a href="List.php">他のユーザーの出品商品一覧ページへ</a>

@@ -21,7 +21,7 @@ if ($status == false) {
   $output = "";
   foreach ($result as $record) {
     $output .= "<tr>";
-    $output .= "<td>{$record["owner_id"]}</td>";
+    // $output .= "<td>{$record["owner_id"]}</td>";
     $output .= "<td>{$record["item_name"]}</td>";
     $output .= "<td>{$record["maker"]}</td>";
     $output .= "<td>{$record["size"]}</td>";
@@ -58,7 +58,7 @@ if ($status == false) {
     <table>
       <thead>
         <tr>
-          <th>出品者ID</th>
+          <!-- <th>出品者ID</th> -->
           <th>商品名</th>
           <th>メーカー</th>
           <th>サイズ</th>
