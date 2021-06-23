@@ -14,8 +14,6 @@ if (
     exit('Param Error');
 }
 
-
-
 $user_name = $_POST["user_name"];
 $mail = $_POST["mail"];
 $password = $_POST["password"];

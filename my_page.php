@@ -15,7 +15,7 @@ $status = $stmt->execute();
 
 if ($status == false) {
   $error = $stmt->errorInfo();
-  echo json_encode(["error_msg" => "{$error[2]}"]);
+  echo json_encode(["user_error_msg" => "{$error[2]}"]);
   exit();
 } else {
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -27,18 +27,18 @@ if ($status == false) {
 }
 
 // 自分の出品情報をDBから取得
-$sql = 'SELECT * FROM item_table WHERE owner_id = :id';
+$sql = 'SELECT * FROM item_table WHERE owner_id = :id AND is_status = 0';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
 $status = $stmt->execute();
 
 if ($status == false) {
   $error = $stmt->errorInfo();
-  echo json_encode(["error_msg" => "{$error[2]}"]);
+  echo json_encode(["item_error_msg" => "{$error[2]}"]);
   exit();
 } else {
   $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
-  $output = "";
+  $item_output = "";
   foreach ($result as $record) {
     $item_output .= "<tr>";
     $item_output .= "<td>{$record["item_name"]}</td>";
@@ -51,6 +51,20 @@ if ($status == false) {
   }
   unset($value);
 }
+
+$sql = 'SELECT COUNT(*) FROM item_table WHERE owner_id = :id AND is_status = 2';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
+$status = $stmt->execute();
+
+if ($status == false) {
+  $error = $stmt->errorInfo();
+  echo json_encode(["count_error_msg" => "{$error[2]}"]);
+  exit();
+} else {
+  $request_count = $stmt->fetch();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +87,7 @@ if ($status == false) {
   <a href="My_list.php">マイリスト</a>
   <a href="List.php">他のユーザーの出品商品一覧ページへ</a>
   <a href="contact_input.php">コンタクトページへ</a>
-  <a href="trade_request.php">交換依頼がきています！！！</a>
+  <a href="trade_request_my_list.php">他のユーザーからの交換依頼件数 <?= $request_count[0] ?>件</a>
 
   <fieldset>
     <legend>自分の登録情報</legend>

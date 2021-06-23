@@ -6,10 +6,11 @@ $pdo = connect_to_db();
 
 $my_id = $_SESSION['id'];
 $user_name = $_SESSION['user_name'];
+$item_id = $_GET["item_id"];
 
-$sql = 'SELECT * FROM item_table WHERE owner_id = :my_id AND is_status = 2';
+$sql = 'SELECT * FROM item_table WHERE id = :item_id AND is_status = 2';
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':my_id', $my_id, PDO::PARAM_INT);
+$stmt->bindValue(':item_id', $item_id, PDO::PARAM_INT);
 $status = $stmt->execute();
 
 if ($status == false) {
@@ -20,12 +21,11 @@ if ($status == false) {
   $My_result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-var_dump($My_result);
-exit();
+$tradeItem_id = $My_result["tradeItem_id"];
 
-$sql = 'SELECT * FROM item_table WHERE id = :target_item_id';
+$sql = 'SELECT * FROM item_table WHERE id = :tradeItem_id AND is_status = 1';
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':target_item_id', $target_item_id, PDO::PARAM_INT);
+$stmt->bindValue(':tradeItem_id', $tradeItem_id, PDO::PARAM_INT);
 $status = $stmt->execute();
 
 if ($status == false) {
@@ -33,7 +33,7 @@ if ($status == false) {
   echo json_encode(["error_msg" => "{$error[2]}"]);
   exit();
 } else {
-  $Target_result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $tradeItem_result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 ?>
@@ -59,10 +59,10 @@ if ($status == false) {
   <fieldset>
     <legend>相手の出品商品 詳細</legend>
     <tr>
-      <td><?= $Target_result["item_name"] ?></td>
-      <td><?= $Target_result["maker"] ?></td>
-      <td><?= $Target_result["size"] ?></td>
-      <td><img src=<?= $Target_result["image"] ?> height=150px></td>
+      <td><?= $tradeItem_result["item_name"] ?></td>
+      <td><?= $tradeItem_result["maker"] ?></td>
+      <td><?= $tradeItem_result["size"] ?></td>
+      <td><img src=<?= $tradeItem_result["image"] ?> height=150px></td>
     </tr>
   </fieldset>
 
@@ -76,7 +76,7 @@ if ($status == false) {
     </tr>
   </fieldset>
 
-  <a href='Negotiation_act.php?Target_id=<?= $Target_result["id"] ?>&My_id=<?= $My_result["id"] ?>'>交換依頼</a>
+  <a href='trade_request_act.php?tradeItem_id=<?= $tradeItem_id ?>&My_id=<?= $My_result["id"] ?>'>承諾</a>
 
 </body>
 
