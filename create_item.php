@@ -4,6 +4,9 @@ include("functions.php");
 check_session_id();
 $pdo = connect_to_db();
 
+var_dump($_SESSION);
+exit();
+
 if (
   !isset($_POST['item_name']) || $_POST['item_name'] == '' ||
   !isset($_POST['size']) || $_POST['size'] == '' ||
