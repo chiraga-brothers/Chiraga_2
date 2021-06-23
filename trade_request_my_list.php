@@ -7,7 +7,7 @@ $pdo = connect_to_db();
 $user_name = $_SESSION['user_name'];
 $session_id = $_SESSION['id'];
 
-$sql = 'SELECT * FROM item_table WHERE owner_id = :id';
+$sql = 'SELECT * FROM item_table WHERE owner_id = :id AND is_status = 2';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
 $status = $stmt->execute();
@@ -25,7 +25,7 @@ if ($status == false) {
     $output .= "<td>{$record["maker"]}</td>";
     $output .= "<td>{$record["size"]}</td>";
     $output .= "</tr><tr>";
-    $output .= "<td></td><td></td><td></td><td></td><td><a href='My_item.php?id={$record["id"]}'><img src='{$record["image"]}' height=150px></a></td>";
+    $output .= "<td></td><td></td><td></td><td></td><td><a href='trade_request.php?item_id={$record["id"]}'><img src='{$record["image"]}' height=150px></a></td>";
     $output .= "</tr><tr>";
     $output .= "</tr>";
   }
@@ -52,8 +52,7 @@ if ($status == false) {
   <a href="my_page.php">マイページへ</a>
   <a href="List.php">他のユーザーの出品商品一覧ページへ</a>
   <fieldset>
-    <legend>自分の出品商品 一覧</legend>
-    <a href="Item_input.php">新規出品</a>
+    <legend>交換依頼商品 一覧</legend>
     <a href="log_out.php">ログアウト</a>
     <table>
       <thead>

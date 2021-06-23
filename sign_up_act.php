@@ -1,5 +1,8 @@
 <?php
+session_start();
 include('functions.php');
+$pdo = connect_to_db();
+
 
 if (
     !isset($_POST['user_name']) || $_POST['user_name'] == '' ||
@@ -10,32 +13,16 @@ if (
 ) {
     exit('Param Error');
 }
-// exit('ok');
-
 
 $user_name = $_POST["user_name"];
 $mail = $_POST["mail"];
 $password = $_POST["password"];
 $address = $_POST["address"];
 $phone = $_POST["phone"];
-// exit('ok');
 
-// DB接続
-$pdo = connect_to_db();
-// var_dump($phone);
-// exit();
-// DB接続
-// try {
-//     $pdo = new PDO($dbn, $user, $pwd);
-// } catch (PDOException $e) {
-//     echo json_encode(["db error" => "{$e->getMessage()}"]);
-//     exit();
-// }
-// exit('ok');
 
 $sql = 'INSERT INTO users_table (id, user_name, mail, password, address, phone, created_at, updated_at)VALUES  (NULL, :user_name, :mail, :password, :address, :phone, sysdate(), sysdate())';
-// var_dump($sql);
-// exit();
+
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
@@ -45,13 +32,37 @@ $stmt->bindValue(':address', $address, PDO::PARAM_STR);
 $stmt->bindValue(':phone', $phone, PDO::PARAM_STR);
 $status = $stmt->execute();
 
+if ($status == false) {
+    $error = $stmt->errorInfo();
+    echo json_encode(["error_msg" => "{$error[2]}"]);
+    exit();
+}
 
 
-// exit('ok');
+$sql = 'SELECT * FROM users_table WHERE user_name=:user_name AND password=:password';
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
+$stmt->bindValue(':password', $password, PDO::PARAM_INT);
+$status = $stmt->execute();
 
 if ($status == false) {
     $error = $stmt->errorInfo();
-    exit('sqlError:' . $error[2]);
+    echo json_encode(["error_msg" => "{$error[2]}"]);
+    exit();
+}
+
+
+$val = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!$val) {
+    echo "<p>すでに登録されているユーザです．</p>";
+    echo '<a href="log_in.php">login</a>';
+    exit();
 } else {
+    $_SESSION = array();
+    $_SESSION['session_id'] = session_id();
+    $_SESSION['user_name'] = $val['user_name'];
+    $_SESSION['id'] = $val['id'];
     header('Location:my_page.php');
+    exit();
 }

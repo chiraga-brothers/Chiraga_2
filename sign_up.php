@@ -1,11 +1,3 @@
-<?php
-// var_dump($_POST);
-// exit('ok');
-session_start();
-include('functions.php');
-
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -24,7 +16,7 @@ include('functions.php');
         <h2>会員登録フォーム</h2>
     </div>
     <div>
-        <form action="sigh_up_check.php" method="POST" name="form" onsubmit="return validate()">
+        <form action="sign_up_check.php" method="POST" name="form" onsubmit="return validate()">
             <h1 class="contact-title">会員登録 内容入力</h1>
             <p>お客様情報をご入力の上、「確認画面へ」ボタンをクリックしてください。</p>
             <div>
