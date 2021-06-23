@@ -35,7 +35,7 @@
          <h2>ユーザー情報編集</h2>
      </div>
      <div>
-         <form action="User_update.php" method="POST" name="form" onsubmit="return validate()">
+         <form action="User_update.php" method="POST" name="form" onsubmit="return validate()" enctype="multipart/form-data">
              <h1 class="contact-title">会員登録 内容入力</h1>
              <p>お客様情報をご入力の上、「確認画面へ」ボタンをクリックしてください。</p>
              <div>
@@ -59,8 +59,17 @@
                      <label>電話番号<span>必須</span></label>
                      <input type="text" name="phone" value="<?= $record["phone"] ?>">
                  </div>
+                 <div>
+                     <label>ユーザー画像を変更する</label>
+                     <div><input type="file" name="user_image" accept="image/*" capture="camera"></div>
+                 </div>
              </div>
-             <button type="submit">確認画面へ</button>
+             <button type="submit">変更する</button>
+             <div>
+
+
+             </div>
+             <a href="My_account.php">マイページへ</a>
          </form>
      </div>
  </body>
