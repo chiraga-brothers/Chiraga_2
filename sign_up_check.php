@@ -8,62 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST["address"];
     $phone = $_POST["phone"];
 }
-
-// 送信ボタンが押されたら
-if (isset($_POST["submit"])) {
-    // 送信ボタンが押された時に動作する処理をここに記述する
-
-    // 日本語をメールで送る場合のおまじない
-    mb_language("ja");
-    mb_internal_encoding("UTF-8");
-
-    //mb_send_mail("kanda.it.school.trial@gmail.com", "メール送信テスト", "メール本文");
-
-    // 件名を変数subjectに格納
-    $subject = "［自動送信］お問い合わせ内容の確認";
-
-    // メール本文を変数bodyに格納
-    $body = <<< EOM
-{$user_name}　様
-
-お問い合わせありがとうございます。
-以下のお問い合わせ内容を、メールにて確認させていただきました。
-
-===================================================
-【 お名前 】 
-{$user_name}
-
-【 メールアドレス 】 
-{$email}
-
-【 住所 】 
-{$address}
-
-【 電話番号 】 
-{$phone}
-
-===================================================
-
-内容を確認のうえ、回答させて頂きます。
-しばらくお待ちください。
-EOM;
-
-    // 送信元のメールアドレスを変数fromEmailに格納
-    $fromEmail = "contact@dream-php-seminar.com";
-
-    // 送信元の名前を変数fromNameに格納
-    $fromName = "会員登録テスト";
-
-    // ヘッダ情報を変数headerに格納する		
-    $header = "From: " . mb_encode_mimeheader($fromName) . "<{$fromEmail}>";
-
-    // メール送信を行う
-    mb_send_mail($email, $subject, $body, $header);
-
-    // サンクスページに画面遷移させる
-    // header("Location: thanks.php");
-    // exit;
-}
 ?>
 <html lang="ja">
 
@@ -81,7 +25,7 @@ EOM;
         <h2>会員登録フォーム</h2>
     </div>
     <div>
-        <form action="txt_create.php" method="POST">
+        <form action="sign_up_act.php" method="POST">
             <input type="hidden" name="user_name" value="<?php echo $user_name; ?>">
             <input type="hidden" name="mail" value="<?php echo $mail; ?>">
             <input type="hidden" name="password" value="<?php echo $password; ?>">
@@ -104,7 +48,7 @@ EOM;
                 </div>
                 <div>
                     <label>住所</label>
-                    <p><?php echo $addres; ?></p>
+                    <p><?php echo $address; ?></p>
                 </div>
                 <div>
                     <label>電話番号</label>
