@@ -28,6 +28,7 @@ if ($status == false) {
     <meta charset="UTF-8">
     <title>お問い合わせ</title>
     <link rel="stylesheet" href="stylesheet.css">
+
 </head>
 
 <body>
@@ -37,10 +38,12 @@ if ($status == false) {
     <div>
         <form action="contact_confirm.php" method="POST">
             <div>
+
                 <table>
                     <tbody>
                         <tr>
                             <td>お名前 : </td>
+
                             <td><input type="text" name="user_name" value="<?= $result['user_name'] ?>"></td>
                         </tr>
                         <tr>
@@ -60,10 +63,12 @@ if ($status == false) {
                         <tr>
                             <td>お問合せ内容</td>
                             <td><textarea name="content" rows="5" placeholder="内容を入力" type="text"></textarea></td>
+
                         </tr>
                     </tbody>
                 </table>
             </div>
+
     </div>
     <button type="submit">確認画面へ</button>
     </form>
