@@ -27,7 +27,7 @@ if ($stmt->fetchColumn() > 0) {
     exit();
 }
 
-$sql = 'INSERT INTO users_table(id, user_name, mail, password, addres, phone, created_at, updated_at) VALUES(NULL, :user_name, :mail, :password, :addres, :phone, sysdate(), sysdate())';
+$sql = 'INSERT INTO users_table(id, user_name, mail, password, address, phone, created_at, updated_at) VALUES(NULL, :user_name, :mail, :password, :address, :phone, sysdate(), sysdate())';
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);

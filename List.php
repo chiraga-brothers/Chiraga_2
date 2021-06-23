@@ -7,7 +7,7 @@ $pdo = connect_to_db();
 $session_id = $_SESSION['id'];
 $user_name = $_SESSION['user_name'];
 
-$sql = 'SELECT * FROM item_table WHERE owner_id != :id';
+$sql = 'SELECT * FROM item_table WHERE owner_id != :id AND is_status = 0';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
 $status = $stmt->execute();

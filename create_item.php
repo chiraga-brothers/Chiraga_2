@@ -39,7 +39,7 @@ $size = $_POST['size'];
 $maker = $_POST['maker'];
 $owner_id = $_SESSION['id'];
 
-$sql = 'INSERT INTO item_table(id, item_name, size, maker, image, owner_id, is_status, recuestUser_id, created_at, updated_at) VALUES(NULL, :item_name, :size, :maker, :image, :owner_id, 0, NULL, sysdate(), sysdate())';
+$sql = 'INSERT INTO item_table(id, item_name, size, maker, image, owner_id, is_status, tradeItem_id, created_at, updated_at) VALUES(NULL, :item_name, :size, :maker, :image, :owner_id, 0, NULL, sysdate(), sysdate())';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':item_name', $item_name, PDO::PARAM_STR);
 $stmt->bindValue(':size', $size, PDO::PARAM_STR);

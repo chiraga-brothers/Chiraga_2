@@ -1,7 +1,4 @@
 <?php
-// var_dump($_POST);
-// exit();
-
 include('functions.php');
 
 if (
