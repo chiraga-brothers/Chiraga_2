@@ -27,11 +27,14 @@ if ($status == false) {
 <head>
     <meta charset="UTF-8">
     <title>お問い合わせ</title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
+    <div>
+        <h1>ホリマニア</h1>
+    </div>
     <div>
         <h2>お問い合わせフォーム</h2>
     </div>
@@ -61,7 +64,7 @@ if ($status == false) {
                                 </select></td>
                         </tr>
                         <tr>
-                            <td>お問合せ内容</td>
+                            <td>お問合せ内容：</td>
                             <td><textarea name="content" rows="5" placeholder="内容を入力" type="text"></textarea></td>
 
                         </tr>

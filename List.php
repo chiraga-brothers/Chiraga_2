@@ -20,15 +20,11 @@ if ($status == false) {
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $output = "";
   foreach ($result as $record) {
-    $output .= "<tr>";
-    // $output .= "<td>{$record["owner_id"]}</td>";
-    $output .= "<td>{$record["item_name"]}</td>";
-    $output .= "<td>{$record["maker"]}</td>";
-    $output .= "<td>{$record["size"]}</td>";
-    $output .= "</tr><tr>";
-    $output .= "<td></td><td></td><td></td><td></td><td></td><td><a href='Select_item.php?id={$record["id"]}'><img src='{$record["image"]}' height=150px></a></td>";
-    $output .= "</tr><tr>";
-    $output .= "</tr>";
+
+    $output .= "<p>商品名：{$record["item_name"]}</p>";
+    $output .= "<p>メーカー名：{$record["maker"]}</p>";
+    $output .= "<p>サイズ：{$record["size"]}</p>";
+    $output .= "<a href='Select_item.php?id={$record["id"]}'><img src='{$record["image"]}' height=150px></a>";
   }
   unset($value);
 }
@@ -41,37 +37,32 @@ if ($status == false) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>マイページ</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     a {
       margin: 0 10px;
+    }
+
+    .another {
+      font-size: 30px;
     }
   </style>
 </head>
 
 <body>
-  <p>現在のユーザー [<?= $user_name ?>]</p>
-  <a href="My_list.php">自分の出品中の商品一覧ページへ</a>
-  <fieldset>
-    <legend>他のユーザーの出品商品</legend>
-    <a href="Item_input.php">新規出品</a>
-    <a href="log_out.php">ログアウト</a>
-    <table>
-      <thead>
-        <tr>
-          <!-- <th>出品者ID</th> -->
-          <th>商品名</th>
-          <th>メーカー</th>
-          <th>サイズ</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?= $output ?>
-      </tbody>
-    </table>
-  </fieldset>
+  <div>
+    <h1>ホリマニア</h1>
+  </div>
+  <div>
+    <h2>他のユーザーの出品商品リスト</h2>
+  </div>
+  <p>現在のユーザー [<?= $user_name ?>]さん</p>
+  <a href="My_list.php">マイリストへ</a>
+  <a href="Item_input.php">新規出品</a>
+  <a href="log_out.php">ログアウト</a>
+
+  <?= $output ?>
+
 </body>
 
 </html>

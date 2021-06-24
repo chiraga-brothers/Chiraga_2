@@ -34,21 +34,37 @@ if ($status == false) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>マイページ</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     a {
       margin: 0 10px;
+    }
+
+    .account_edit {
+      font-size: 30px;
+    }
+
+    .form {
+      margin-top: 30px;
+      margin-left: 20px;
     }
   </style>
 </head>
 
 <body>
-  <img src="<?= $user_image ?>" height=150px>
-  <a href="my_page.php">マイページへ</a>
+  <div>
+    <h1>ホリマニア</h1>
+  </div>
+  <div>
+    <h2>マイアカウント</h2>
+  </div>
+  <img src="<?= $user_image ?>" height=90px>
+  <a href="my_page.php">マイページ</a>
   <a href="User_edit.php?id=<?= $user_id ?>">アカウント情報の編集</a>
-  <fieldset>
-    <legend>自分の登録情報</legend>
-    <a href="Item_input.php">新規出品</a>
-    <a href="log_out.php">ログアウト</a>
+  <a href="Item_input.php">新規出品</a>
+  <a href="log_out.php">ログアウト</a>
+  <fieldset class="form">
+    <legend class="account_edit">自分の登録情報</legend>
     <table>
       <tbody>
         <?= $output ?>
