@@ -70,6 +70,7 @@ if ($status == false) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>マイページ</title>
   <link rel="stylesheet" href="style.css">
   <style>
@@ -112,6 +113,19 @@ if ($status == false) {
 </head>
 
 <body>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="menu-btn">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <div class="menu">
+    <a href="My_account.php" class="menu__item">マイアカウント</a>
+    <a href="My_list.php" class="menu__item">マイリスト</a>
+    <a href="List.php" class="menu__item">他のユーザーの出品商品一覧ページへ</a>
+    <a href="contact_input.php" class="menu__item">コンタクトページへ</a>
+    <a href="log_out.php" class="menu__item">ログアウト</a>
+  </div>
+
   <div>
     <h1>ホリマニア</h1>
   </div>
@@ -120,11 +134,7 @@ if ($status == false) {
     <a href="trade_request_my_list.php" class="ベル">🔔 <?= $request_count[0] ?>件</a>
   </div>
   <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
-  <a href="My_account.php">マイアカウント</a>
-  <a href="My_list.php">マイリスト</a>
-  <a href="List.php">他のユーザーの出品商品一覧ページへ</a>
-  <a href="contact_input.php">コンタクトページへ</a>
-  <a href="log_out.php">ログアウト</a>
+
   <fieldset class="form">
     <legend class="プロフィール">プロフィール</legend>
     <table>
@@ -141,6 +151,15 @@ if ($status == false) {
     <?= $item_output ?>
 
   </fieldset>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script>
+    $(function() {
+      $('.menu-btn').on('click', function() {
+        $('.menu').toggleClass('is-active');
+      });
+    }());
+  </script>
 
 
 </body>

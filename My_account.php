@@ -33,6 +33,7 @@ if ($status == false) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>マイページ</title>
   <link rel="stylesheet" href="style.css">
   <style>
@@ -52,6 +53,19 @@ if ($status == false) {
 </head>
 
 <body>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="menu-btn">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <div class="menu">
+    <a href="My_account.php" class="menu__item">マイアカウント</a>
+    <a href="My_list.php" class="menu__item">マイリスト</a>
+    <a href="List.php" class="menu__item">他のユーザーの出品商品一覧ページへ</a>
+    <a href="contact_input.php" class="menu__item">コンタクトページへ</a>
+    <a href="log_out.php" class="menu__item">ログアウト</a>
+  </div>
+
   <div>
     <h1>ホリマニア</h1>
   </div>
@@ -59,10 +73,6 @@ if ($status == false) {
     <h2>マイアカウント</h2>
   </div>
   <img src="<?= $user_image ?>" height=90px>
-  <a href="my_page.php">マイページ</a>
-  <a href="User_edit.php?id=<?= $user_id ?>">アカウント情報の編集</a>
-  <a href="Item_input.php">新規出品</a>
-  <a href="log_out.php">ログアウト</a>
   <fieldset class="form">
     <legend class="account_edit">自分の登録情報</legend>
     <table>
@@ -71,6 +81,19 @@ if ($status == false) {
       </tbody>
     </table>
   </fieldset>
+
+  <a href="User_edit.php">ユーザー情報の編集</a>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script>
+    $(function() {
+      $('.menu-btn').on('click', function() {
+        $('.menu').toggleClass('is-active');
+      });
+    }());
+  </script>
+
 </body>
 
 </html>

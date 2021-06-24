@@ -49,10 +49,9 @@ if ($status == false) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>選択したアイテムのページ</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Bootstrap CSS -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
   <style>
     a {
       margin: 0 10px;
@@ -61,9 +60,20 @@ if ($status == false) {
 </head>
 
 <body>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="menu-btn">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <div class="menu">
+    <a href="My_account.php" class="menu__item">マイアカウント</a>
+    <a href="My_list.php" class="menu__item">マイリスト</a>
+    <a href="List.php" class="menu__item">他のユーザーの出品商品一覧ページへ</a>
+    <a href="contact_input.php" class="menu__item">コンタクトページへ</a>
+    <a href="log_out.php" class="menu__item">ログアウト</a>
+  </div>
+
   <p>現在のユーザー [<?= $user_name ?>]</p>
-  <a href="List.php">他のユーザーの出品商品一覧ページへ</a>
-  <a href="My_list.php">自分の出品商品一覧ページへ</a>
   <fieldset>
     <legend>選んだ商品の詳細</legend>
     <h2><?= $owner_name ?></h2>
@@ -71,9 +81,14 @@ if ($status == false) {
   </fieldset>
   <h2><a href="Choose_my_item.php?id=<?= $item_id ?>">トレードを依頼する</a></h2>
 
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script> -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script>
+    $(function() {
+      $('.menu-btn').on('click', function() {
+        $('.menu').toggleClass('is-active');
+      });
+    }());
+  </script>
 
 </body>
 
