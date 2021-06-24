@@ -4,12 +4,10 @@ include("functions.php");
 check_session_id();
 $pdo = connect_to_db();
 
-
-$item_id = $_GET['id'];
 $user_name = $_SESSION['user_name'];
 $session_id = $_SESSION['id'];
 
-$sql = 'SELECT * FROM item_table WHERE owner_id = :id AND is_status = 0';
+$sql = 'SELECT * FROM item_table WHERE owner_id = :id AND is_status = 2';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
 $status = $stmt->execute();
@@ -27,7 +25,7 @@ if ($status == false) {
     $output .= "<td>{$record["maker"]}</td>";
     $output .= "<td>{$record["size"]}</td>";
     $output .= "</tr><tr>";
-    $output .= "<td></td><td></td><td></td><td></td><td><a href='Negotiation.php?my_item_id={$record["id"]}&target_item_id=$item_id'><img src='{$record["image"]}' height=150px></a></td>";
+    $output .= "<td></td><td></td><td></td><td></td><td><a href='trade_request.php?item_id={$record["id"]}'><img src='{$record["image"]}' height=150px></a></td>";
     $output .= "</tr><tr>";
     $output .= "</tr>";
   }
@@ -79,10 +77,16 @@ if ($status == false) {
     <a href="log_out.php" class="menu__item">ログアウト</a>
   </div>
 
+  <div>
+    <h1>ホリマニア</h1>
+  </div>
+  <div>
+    <h2>交換商品リスト</h2>
+  </div>
   <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <fieldset>
-    <legend>自分の出品商品 一覧</legend>
-    <h2>トレードする自分アイテムを選択して下さい</h2>
+    <legend>交換依頼商品 一覧</legend>
+    <a href="log_out.php">ログアウト</a>
     <table>
       <thead>
         <tr>

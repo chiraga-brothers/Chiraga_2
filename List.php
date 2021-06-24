@@ -7,7 +7,7 @@ $pdo = connect_to_db();
 $session_id = $_SESSION['id'];
 $user_name = $_SESSION['user_name'];
 
-$sql = 'SELECT * FROM item_table WHERE owner_id != :id';
+$sql = 'SELECT * FROM item_table WHERE owner_id != :id AND is_status = 0';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
 $status = $stmt->execute();
@@ -20,17 +20,27 @@ if ($status == false) {
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $output = "";
   foreach ($result as $record) {
-    $output .= "<tr>";
-    $output .= "<td>{$record["owner_id"]}</td>";
-    $output .= "<td>{$record["item_name"]}</td>";
-    $output .= "<td>{$record["maker"]}</td>";
-    $output .= "<td>{$record["size"]}</td>";
-    $output .= "</tr><tr>";
-    $output .= "<td></td><td></td><td></td><td></td><td></td><td><a href='Select_item.php?id={$record["id"]}'><img src='{$record["image"]}' height=150px></a></td>";
-    $output .= "</tr><tr>";
-    $output .= "</tr>";
+
+    $output .= "<p>商品名：{$record["item_name"]}</p>";
+    $output .= "<p>メーカー名：{$record["maker"]}</p>";
+    $output .= "<p>サイズ：{$record["size"]}</p>";
+    $output .= "<a href='Select_item.php?id={$record["id"]}'><img src='{$record["image"]}' height=150px></a>";
   }
   unset($value);
+}
+
+$sql = 'SELECT * FROM users_table WHERE id = :id';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
+$status = $stmt->execute();
+
+if ($status == false) {
+  $error = $stmt->errorInfo();
+  echo json_encode(["user_error_msg" => "{$error[2]}"]);
+  exit();
+} else {
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user_image = $result['user_image'];
 }
 ?>
 
@@ -40,38 +50,54 @@ if ($status == false) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>マイページ</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     a {
       margin: 0 10px;
+    }
+
+    .another {
+      font-size: 30px;
     }
   </style>
 </head>
 
 <body>
-  <p>現在のユーザー [<?= $user_name ?>]</p>
-  <a href="My_list.php">自分の出品中の商品一覧ページへ</a>
-  <fieldset>
-    <legend>他のユーザーの出品商品</legend>
-    <a href="Item_input.php">新規出品</a>
-    <a href="log_out.php">ログアウト</a>
-    <table>
-      <thead>
-        <tr>
-          <th>出品者ID</th>
-          <th>商品名</th>
-          <th>メーカー</th>
-          <th>サイズ</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?= $output ?>
-      </tbody>
-    </table>
-  </fieldset>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="menu-btn">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <div class="menu">
+    <a href="My_account.php" class="menu__item">マイアカウント</a>
+    <a href="My_list.php" class="menu__item">マイリスト</a>
+    <a href="List.php" class="menu__item">他のユーザーの出品商品一覧ページへ</a>
+    <a href="contact_input.php" class="menu__item">コンタクトページへ</a>
+    <a href="log_out.php" class="menu__item">ログアウト</a>
+  </div>
+
+  <div>
+    <h1>ホリマニア</h1>
+  </div>
+  <div>
+    <h2>他のユーザーの出品商品リスト</h2>
+  </div>
+  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
+  <a href="Item_input.php">新規出品</a>
+
+  <?= $output ?>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script>
+    $(function() {
+      $('.menu-btn').on('click', function() {
+        $('.menu').toggleClass('is-active');
+      });
+    }());
+  </script>
+
 </body>
 
 </html>

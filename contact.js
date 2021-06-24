@@ -6,76 +6,53 @@ var validate = function () {
     removeClass("error-form");
 
     // お名前の入力をチェック
-    if (document.form.name.value == "") {
-        errorElement(document.form.name, "お名前が入力されていません");
+    if (document.form.user_name.value == "") {
+        errorElement(document.form.user_name, "お名前が入力されていません");
         flag = false;
-    }
-
-    // ふりがなの入力をチェック
-    if (document.form.furigana.value == "") {
-        errorElement(document.form.furigana, "ふりがなが入力されていません");
-        flag = false;
-    } else {
-        // メールアドレスの形式をチェック
-        if (!validateKana(document.form.furigana.value)) {
-            errorElement(document.form.furigana, "ひらがな以外の文字が入っています");
-            flag = false;
-        }
     }
 
     // メールアドレスの入力をチェック
-    if (document.form.email.value == "") {
-        errorElement(document.form.email, "メールアドレスが入力されていません");
+    if (document.form.mail.value == "") {
+        errorElement(document.form.mail, "メールアドレスが入力されていません");
         flag = false;
     } else {
         // メールアドレスの形式をチェック
-        if (!validateMail(document.form.email.value)) {
-            errorElement(document.form.email, "メールアドレスが正しくありません");
+        if (!validateMail(document.form.mail.value)) {
+            errorElement(document.form.mail, "メールアドレスが正しくありません");
             flag = false;
         }
     }
 
+    // パスワードの入力をチェック
+    if (document.form.password.value == "") {
+        errorElement(document.form.password, "パスワードが入力されていません");
+        flag = false;
+    }
+
+    // 住所の入力をチェック
+    if (document.form.address.value == "") {
+        errorElement(document.form.address, "住所が入力されていません");
+        flag = false;
+    }
+
     // 電話番号の入力をチェック
-    if (document.form.tel.value == "") {
-        errorElement(document.form.tel, "電話番号が入力されていません");
+    if (document.form.phone.value == "") {
+        errorElement(document.form.phone, "電話番号が入力されていません");
         flag = false;
     } else {
         // 電話番号の形式をチェック
-        if (!validateNumber(document.form.tel.value)) {
-            errorElement(document.form.tel, "半角数字のみを入力してください");
+        if (!validateNumber(document.form.phone.value)) {
+            errorElement(document.form.phone, "半角数字のみを入力してください");
             flag = false;
         } else {
-            if (!validateTel(document.form.tel.value)) {
-                errorElement(document.form.tel, "電話番号が正しくありません");
+            if (!validateTel(document.form.phone.value)) {
+                errorElement(document.form.phone, "電話番号が正しくありません");
                 flag = false;
             }
         }
     }
 
-    // お問い合わせ項目の選択をチェック
-    if (document.form.item.value == "") {
-        errorElement(document.form.item, "項目が選択されていません");
-        flag = false;
-    }
-
-    // お問い合わせ内容の入力をチェック
-    if (document.form.content.value == "") {
-        errorElement(document.form.content, "内容が入力されていません");
-        flag = false;
-
-    }
-    if (document.form.username.value == "") {
-        errorElement(document.form.username, "入力されていません");
-        flag = false;
-    }
-
-    if (document.form.password.value == "") {
-        errorElement(document.form.password, "入力されていません");
-        flag = false;
-    }
-
     return flag;
-
 
 }
 
