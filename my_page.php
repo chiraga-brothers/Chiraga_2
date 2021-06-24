@@ -79,6 +79,7 @@ if ($status == false) {
 
     .プロフィール {
       font-size: 30px;
+
     }
 
     .商品一覧 {

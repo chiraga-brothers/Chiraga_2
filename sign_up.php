@@ -9,8 +9,13 @@
     <script type="text/javascript" src="contact.js"></script>
     <style>
         .contact-title {
-            margin-top: 100px;
-            width: 180%;
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        p {
+            margin-bottom: 40px;
+
         }
 
         .sign_up {
@@ -20,39 +25,63 @@
             background: white;
             padding: 30px;
             width: 90%;
+        }
+
+        .form {
+            border: solid;
+            padding: 10px;
+            margin: 10px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
 
         }
 
         .user_name {
-            margin: 10px;
+            margin: 20px;
 
         }
 
         .mail {
-            margin: 10px;
+            margin: 20px;
         }
 
         .password {
-            margin: 10px;
+            margin: 20px;
         }
 
         .address {
-            margin: 10px;
+            margin: 20px;
         }
 
         .phone {
-            margin: 10px;
+            margin: 20px;
         }
 
         .submit {
             display: flex;
             justify-content: space-evenly;
             align-items: center;
-            width: auto;
+            margin-top: 50px;
         }
 
         .date {
             width: 200%;
+        }
+
+        body>div>a {
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 25px;
+            position: absolute;
+            top: 125px;
+            right: 1px;
+
         }
     </style>
 </head>
@@ -63,36 +92,39 @@
     </div>
     <div>
         <h2>会員登録フォーム</h2>
+        <a href="log_in.php" class="log">ログイン</a>
     </div>
     <div>
 
         <form action="sign_up_check.php" method="POST" onsubmit="return validate()">
             <h1 class="contact-title">会員登録 内容入力</h1>
             <p>お客様情報をご入力の上、「確認画面へ」ボタンをクリックしてください。</p>
-            <div>
-                <div>
-                    <label>名前<span>必須</span></label>
-                    <input type="text" name="user_name" placeholder="例）山田太郎" value="">
+            <div class="form">
+                <div class="user_name">
+                    <label>名前<span>必須</span></label><br>
+                    <input type="text" name="user_name" placeholder="例）山田太郎" value="" size="30">
                 </div>
-                <div>
-                    <label>メールアドレス<span>必須</span></label>
-                    <input type="text" name="mail" placeholder="例）kutsuo@example.com" value="">
+                <div class="mail">
+                    <label>メールアドレス<span>必須</span></label><br>
+                    <input type="text" name="mail" placeholder="例）kutsuo@example.com" value="" size="30">
                 </div>
-                <div>
-                    <label>パスワード<span>必須</span></label>
-                    <input type="text" name="password" placeholder="例）123456789" value="">
+                <div class="password">
+                    <label>パスワード<span>必須</span></label><br>
+                    <input type="text" name="password" placeholder="例）123456789" value="" size="30">
                 </div>
-                <div>
-                    <label>住所<span>必須</span></label>
-                    <input type="text" name="address" placeholder="例 ○県○市○区○○ ○丁目○-○-○○○" value="">
+                <div class="address">
+                    <label>住所<span>必須</span></label><br>
+                    <input type="text" name="address" placeholder="例 ○県○市○区○○ ○丁目○-○-○○○" value="" size="30">
                 </div>
-                <div>
-                    <label>電話番号<span>必須</span></label>
-                    <input type="text" name="phone" placeholder="例）0000000000" value="">
+                <div class="phone">
+                    <label>電話番号<span>必須</span></label><br>
+                    <input type="text" name="phone" placeholder="例）0000000000" value="" size="30">
                 </div>
             </div>
-            <button type="submit">確認画面へ</button>
-            <a href="log_in.php">ログイン</a>
+            <div class="submit">
+                <button type="submit">確認画面へ</button>
+            </div>
+
         </form>
     </div>
 </body>
