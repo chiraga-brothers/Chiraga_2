@@ -43,6 +43,7 @@ if ($status == false) {
   exit();
 } else {
   $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
+  $user_image = $result['user_image'];
   $owner_name = "";
   $owner_name .= "<div>出品者 : {$result[0]["user_name"]} さん</div>";
 }
@@ -80,7 +81,7 @@ if ($status == false) {
   </div>
 
 
-  <p>現在のユーザー [<?= $user_name ?>]</p>
+  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <fieldset>
     <legend>オーナーの出品商品 一覧</legend>
     <h2><?= $owner_name ?></h2>

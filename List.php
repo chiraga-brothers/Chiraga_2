@@ -28,6 +28,20 @@ if ($status == false) {
   }
   unset($value);
 }
+
+$sql = 'SELECT * FROM users_table WHERE id = :id';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
+$status = $stmt->execute();
+
+if ($status == false) {
+  $error = $stmt->errorInfo();
+  echo json_encode(["user_error_msg" => "{$error[2]}"]);
+  exit();
+} else {
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user_image = $result['user_image'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -70,10 +84,8 @@ if ($status == false) {
   <div>
     <h2>他のユーザーの出品商品リスト</h2>
   </div>
-  <p>現在のユーザー [<?= $user_name ?>]さん</p>
-  <a href="My_list.php">マイリストへ</a>
+  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <a href="Item_input.php">新規出品</a>
-  <a href="log_out.php">ログアウト</a>
 
   <?= $output ?>
 

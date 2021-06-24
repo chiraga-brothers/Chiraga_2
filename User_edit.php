@@ -17,6 +17,7 @@
         exit();
     } else {
         $record = $stmt->fetch(PDO::FETCH_ASSOC);
+        $user_image = $record['user_image'];
     }
     ?>
 
@@ -53,7 +54,7 @@
          <h2>ユーザー情報編集</h2>
      </div>
      <div>
-
+         <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
          <form action="User_update.php" method="POST" name="form" onsubmit="return validate()" enctype="multipart/form-data">
 
              <h1 class="contact-title">会員登録 内容入力</h1>

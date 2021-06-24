@@ -37,6 +37,7 @@ if ($status == false) {
   exit();
 } else {
   $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
+  $owner_image = $result['user_image'];
   $owner_name = "";
   $owner_name .= "<a href='Owner_all_item.php?id={$result[0]["id"]}' >出品者 : {$result[0]["user_name"]} さん</a>";
 }
@@ -73,9 +74,10 @@ if ($status == false) {
     <a href="log_out.php" class="menu__item">ログアウト</a>
   </div>
 
-  <p>現在のユーザー [<?= $user_name ?>]</p>
+  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <fieldset>
     <legend>選んだ商品の詳細</legend>
+    <a href="My_account.php"><img src="<?= $owner_image ?>" height=150px></a>
     <h2><?= $owner_name ?></h2>
     <?= $output ?>
   </fieldset>

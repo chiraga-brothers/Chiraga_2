@@ -72,7 +72,7 @@ if ($status == false) {
   <div>
     <h2>マイアカウント</h2>
   </div>
-  <img src="<?= $user_image ?>" height=90px>
+  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <fieldset class="form">
     <legend class="account_edit">自分の登録情報</legend>
     <table>

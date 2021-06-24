@@ -3,6 +3,20 @@ session_start();
 include("functions.php");
 check_session_id();
 $pdo = connect_to_db();
+
+$sql = 'SELECT * FROM users_table WHERE id = :id';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
+$status = $stmt->execute();
+
+if ($status == false) {
+  $error = $stmt->errorInfo();
+  echo json_encode(["user_error_msg" => "{$error[2]}"]);
+  exit();
+} else {
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user_image = $result['user_image'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +68,7 @@ $pdo = connect_to_db();
   <div>
     <h2>出品ページ</h2>
   </div>
+  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <form action="create_item.php" method="POST" enctype="multipart/form-data" class="出品フォーム">
     <fieldset>
       <legend class="アイテム見出し">アイテム登録画面</legend>

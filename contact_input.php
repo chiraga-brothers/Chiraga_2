@@ -19,6 +19,7 @@ if ($status == false) {
     exit();
 } else {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $user_image = $result['user_image'];
 }
 ?>
 
@@ -54,6 +55,7 @@ if ($status == false) {
     <div>
         <h2>お問い合わせフォーム</h2>
     </div>
+    <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
     <div>
         <form action="contact_confirm.php" method="POST">
             <div>
@@ -91,7 +93,6 @@ if ($status == false) {
     </div>
     <button type="submit">確認画面へ</button>
     </form>
-    <p>アカウント情報の変更は<a href="edit.php?id=<?= $user_id ?>">こちら</a></p>
     </div>
 
 

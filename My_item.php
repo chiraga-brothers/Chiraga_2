@@ -33,6 +33,20 @@ if ($status == false) {
   }
   unset($value);
 }
+
+$sql = 'SELECT * FROM users_table WHERE id = :id';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
+$status = $stmt->execute();
+
+if ($status == false) {
+  $error = $stmt->errorInfo();
+  echo json_encode(["user_error_msg" => "{$error[2]}"]);
+  exit();
+} else {
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user_image = $result['user_image'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +79,7 @@ if ($status == false) {
     <a href="log_out.php" class="menu__item">ログアウト</a>
   </div>
 
-  <p>現在のユーザー [<?= $user_name ?>]</p>
+  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <fieldset>
     <legend>自分の出品商品 詳細</legend>
     <a href="Item_input.php">新規出品</a>

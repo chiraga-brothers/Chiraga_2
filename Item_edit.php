@@ -18,6 +18,20 @@ if ($status == false) {
 } else {
   $record = $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+$sql = 'SELECT * FROM users_table WHERE id = :id';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $session_id, PDO::PARAM_INT);
+$status = $stmt->execute();
+
+if ($status == false) {
+  $error = $stmt->errorInfo();
+  echo json_encode(["user_error_msg" => "{$error[2]}"]);
+  exit();
+} else {
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user_image = $result['user_image'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +58,7 @@ if ($status == false) {
     <a href="contact_input.php" class="menu__item">コンタクトページへ</a>
     <a href="log_out.php" class="menu__item">ログアウト</a>
   </div>
-
+  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <form action="Item_update.php" method="POST">
     <fieldset>
       <legend>アイテム編集画面</legend>
