@@ -3,9 +3,58 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>会員登録フォーム</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="contact.js"></script>
+    <style>
+        .contact-title {
+            margin-top: 100px;
+            width: 180%;
+        }
+
+        .sign_up {
+            border-style: solid;
+            margin: 50px;
+            font-size: 30px;
+            background: white;
+            padding: 30px;
+            width: 90%;
+
+        }
+
+        .user_name {
+            margin: 10px;
+
+        }
+
+        .mail {
+            margin: 10px;
+        }
+
+        .password {
+            margin: 10px;
+        }
+
+        .address {
+            margin: 10px;
+        }
+
+        .phone {
+            margin: 10px;
+        }
+
+        .submit {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: auto;
+        }
+
+        .date {
+            width: 200%;
+        }
+    </style>
 </head>
 
 <body>

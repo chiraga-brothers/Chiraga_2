@@ -14,6 +14,9 @@ $content = $_POST["content"];
 
 <body>
     <div>
+        <h1>ホリマニア</h1>
+    </div>
+    <div>
         <h2>お問い合わせ内容確認</h2>
     </div>
     <div>

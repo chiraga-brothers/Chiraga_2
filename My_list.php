@@ -40,19 +40,30 @@ if ($status == false) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>マイページ</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     a {
       margin: 0 10px;
+    }
+
+    .マイリスト {
+      font-size: 30px;
     }
   </style>
 </head>
 
 <body>
-  <p>現在のユーザー [<?= $user_name ?>]</p>
+  <div>
+    <h1>ホリマニア</h1>
+  </div>
+  <div>
+    <h2>マイリスト</h2>
+  </div>
   <a href="my_page.php">マイページへ</a>
   <a href="List.php">他のユーザーの出品商品一覧ページへ</a>
+  <p>現在のユーザー [<?= $user_name ?>]さん</p>
   <fieldset>
-    <legend>自分の出品商品 一覧</legend>
+    <legend class="マイリスト">自分の出品商品 一覧</legend>
     <a href="Item_input.php">新規出品</a>
     <a href="log_out.php">ログアウト</a>
     <table>

@@ -41,14 +41,10 @@ if ($status == false) {
   $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
   $item_output = "";
   foreach ($result as $record) {
-    $item_output .= "<tr>";
-    $item_output .= "<td>{$record["item_name"]}</td>";
-    $item_output .= "<td>{$record["maker"]}</td>";
-    $item_output .= "<td>{$record["size"]}</td>";
-    $item_output .= "</tr><tr>";
-    $item_output .= "<td></td><td></td><td></td><td></td><td><a href='My_item.php?id={$record["id"]}'><img src='{$record["image"]}' height=150px></a></td>";
-    $item_output .= "</tr><tr>";
-    $item_output .= "</tr>";
+    $item_output .= "<p>{$record["item_name"]}</p>";
+    $item_output .= "<p>{$record["maker"]}</p>";
+    $item_output .= "<p>{$record["size"]}</p>";
+    $item_output .= "<a href='My_item.php?id={$record["id"]}'><img src='{$record["image"]}' height=150px></a>";
   }
   unset($value);
 }
@@ -75,24 +71,61 @@ if ($status == false) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>マイページ</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     a {
       margin: 0 10px;
+    }
+
+    .プロフィール {
+      font-size: 30px;
+    }
+
+    .商品一覧 {
+      font-size: 30px;
+    }
+
+    .form {
+      margin-top: 20px;
+    }
+
+    .form2 {
+      margin-top: 10px;
+    }
+
+    .ヘッダー {
+      display: flex;
+      background: #c2eeff;
+      width: 108%;
+    }
+
+    .ベル {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 20px;
+      width: 100px;
     }
   </style>
 </head>
 
 <body>
+  <div>
+    <h1>ホリマニア</h1>
+  </div>
+  <div class="ヘッダー">
+    <h2>マイページ</h2>
+    <a href="trade_request_my_list.php" class="ベル">🔔 <?= $request_count[0] ?>件</a>
+  </div>
   <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <a href="My_account.php">マイアカウント</a>
   <a href="My_list.php">マイリスト</a>
   <a href="List.php">他のユーザーの出品商品一覧ページへ</a>
   <a href="contact_input.php">コンタクトページへ</a>
-  <a href="trade_request_my_list.php">他のユーザーからの交換依頼件数 <?= $request_count[0] ?>件</a>
-
-  <fieldset>
-    <legend>自分の登録情報</legend>
-    <a href="log_out.php">ログアウト</a>
+  <a href="log_out.php">ログアウト</a>
+  <fieldset class="form">
+    <legend class="プロフィール">プロフィール</legend>
     <table>
       <tbody>
         <?= $user_output ?>
@@ -100,26 +133,13 @@ if ($status == false) {
     </table>
   </fieldset>
 
-  <fieldset>
-    <legend>自分の出品商品 一覧</legend>
+  <fieldset class="form2">
+    <legend class="商品一覧">自分の出品商品 一覧</legend>
     <a href="Item_input.php">新規出品</a>
-    <table>
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>メーカー</th>
-          <th>サイズ</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?= $item_output ?>
-      </tbody>
-    </table>
-  </fieldset>
 
+    <?= $item_output ?>
+
+  </fieldset>
 
 
 </body>

@@ -12,6 +12,7 @@ check_session_id();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>交換依頼完了</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
