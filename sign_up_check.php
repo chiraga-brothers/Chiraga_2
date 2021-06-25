@@ -18,7 +18,7 @@ $phone = $_POST["phone"];
     <style>
         .check {
             border: solid 1px;
-            margin: 20px;
+            margin: 20px 20px 50px 40px;
         }
 
         .user_name {
@@ -39,6 +39,13 @@ $phone = $_POST["phone"];
 
         .phone {
             margin: 20px;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -81,8 +88,10 @@ $phone = $_POST["phone"];
                     <p><?php echo $phone; ?></p>
                 </div>
             </div>
-            <input type="button" value="内容を修正する" onclick="history.back(-1)">
-            <button type="submit" name="submit">送信する</button>
+            <div class="btn">
+                <input type="button" value="内容を修正する" onclick="history.back(-1)">
+                <button type="submit" name="submit">送信する</button>
+            </div>
         </form>
     </div>
 </body>

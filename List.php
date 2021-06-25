@@ -61,6 +61,13 @@ if ($status == false) {
     .another {
       font-size: 30px;
     }
+
+    /* .img {
+      position: absolute;
+      top: 98px;
+      left: 100px;
+      height: 150px;
+    } */
   </style>
 </head>
 
@@ -84,7 +91,7 @@ if ($status == false) {
   <div>
     <h2>他のユーザーの出品商品リスト</h2>
   </div>
-  <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
+  <a href="My_account.php" class="img"><img src="<?= $user_image ?>" height: 150px;></a>
   <a href="Item_input.php">新規出品</a>
 
   <?= $output ?>

@@ -37,6 +37,14 @@ if ($status == false) {
   <title>マイページ</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    .user {
+      margin-left: 220px;
+      position: absolute;
+      top: 98px;
+      left: 10px;
+      font-size: 15px;
+    }
+
     a {
       margin: 0 10px;
     }
@@ -46,8 +54,7 @@ if ($status == false) {
     }
 
     .form {
-      margin-top: 30px;
-      margin-left: 20px;
+      margin-top: 50px;
     }
   </style>
 </head>
@@ -71,6 +78,7 @@ if ($status == false) {
   </div>
   <div>
     <h2>マイアカウント</h2>
+    <a href="User_edit.php" class="user">ユーザー情報の編集</a>
   </div>
   <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <fieldset class="form">
@@ -82,7 +90,6 @@ if ($status == false) {
     </table>
   </fieldset>
 
-  <a href="User_edit.php">ユーザー情報の編集</a>
 
 
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

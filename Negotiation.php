@@ -92,7 +92,12 @@ if ($status == false) {
       <td><img src=<?= $Target_result["image"] ?> height=150px></td>
     </tr>
   </fieldset>
-
+  <div>
+    <h1>ホリマニア</h1>
+  </div>
+  <div>
+    <h2>商品詳細</h2>
+  </div>
   <fieldset>
     <legend>自分の出品商品 詳細</legend>
     <tr>

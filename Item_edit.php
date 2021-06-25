@@ -58,6 +58,12 @@ if ($status == false) {
     <a href="contact_input.php" class="menu__item">コンタクトページへ</a>
     <a href="log_out.php" class="menu__item">ログアウト</a>
   </div>
+  <div>
+    <h1>ホリマニア</h1>
+  </div>
+  <div>
+    <h2>アイテム情報編集</h2>
+  </div>
   <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <form action="Item_update.php" method="POST">
     <fieldset>

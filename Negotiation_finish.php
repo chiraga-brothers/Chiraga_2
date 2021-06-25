@@ -6,6 +6,12 @@ check_session_id();
 
 <!DOCTYPE html>
 <html lang="en">
+<div>
+    <h1>ホリマニア</h1>
+</div>
+<div>
+    <h2>交換依頼</h2>
+</div>
 
 <head>
     <meta charset="UTF-8">

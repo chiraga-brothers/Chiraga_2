@@ -32,6 +32,29 @@ if ($status == false) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>お問い合わせ</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .submit {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .img {
+            position: absolute;
+            top: 100px;
+            right: 1px;
+        }
+
+        .form {
+            margin: 30px;
+            width: 100%;
+        }
+
+        .set {
+            margin: 40px;
+            padding-right: 40px;
+        }
+    </style>
 </head>
 
 <body>
@@ -55,45 +78,47 @@ if ($status == false) {
     <div>
         <h2>お問い合わせフォーム</h2>
     </div>
-    <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
+
+    <a href="My_account.php" class="img"><img src="<?= $user_image ?>" height=50px></a>
     <div>
         <form action="contact_confirm.php" method="POST">
-            <div>
+            <fieldset class="set">
+                <div class="form">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>お名前 : </td>
 
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>お名前 : </td>
+                                <td><input type="text" name="user_name" value="<?= $result['user_name'] ?>"></td>
+                            </tr>
+                            <tr>
+                                <td>メールアドレス : </td>
+                                <td><input type="text" name="mail" value="<?= $result['mail'] ?>"></td>
+                            </tr>
+                            <tr>
+                                <td>カテゴリ : </td>
+                                <td><select name="content_title">
+                                        <option value="">項目を選択してください</option>
+                                        <option value="アカウントについて">アカウントについて</option>
+                                        <option value="発送方法について">発送方法について</option>
+                                        <option value="退会について">退会について</option>
+                                        <option value="その他">その他</option>
+                                    </select></td>
+                            </tr>
+                            <tr>
+                                <td>お問合せ内容：</td>
+                                <td><textarea name="content" rows="5" placeholder="内容を入力" type="text"></textarea></td>
 
-                            <td><input type="text" name="user_name" value="<?= $result['user_name'] ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>メールアドレス : </td>
-                            <td><input type="text" name="mail" value="<?= $result['mail'] ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>カテゴリ : </td>
-                            <td><select name="content_title">
-                                    <option value="">項目を選択してください</option>
-                                    <option value="アカウントについて">アカウントについて</option>
-                                    <option value="発送方法について">発送方法について</option>
-                                    <option value="退会について">退会について</option>
-                                    <option value="その他">その他</option>
-                                </select></td>
-                        </tr>
-                        <tr>
-                            <td>お問合せ内容：</td>
-                            <td><textarea name="content" rows="5" placeholder="内容を入力" type="text"></textarea></td>
-
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
     </div>
-    <button type="submit">確認画面へ</button>
+    <div class="submit">
+        <button type="submit">確認画面へ</button>
+    </div>
     </form>
-    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

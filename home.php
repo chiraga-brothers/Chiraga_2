@@ -29,17 +29,20 @@ include('functions.php');
             color: white; */
             display: block;
             outline: none;
-            background: #66FF99;
+            background: #87CEFA;
             border-radius: 10px;
-            padding: 10px 50px;
-            margin: 10px auto;
-            width: 50%;
-            height: 100px;
+            padding: 20px;
+            margin: 10px 20px;
+            width: 150px;
+            height: 150px;
+            font-size: 30px;
         }
 
         .btn2 {
-            background: red;
+            background: #93FFAB;
             color: black;
+            text-align: center;
+            padding: 30px;
         }
 
         .contact {
@@ -60,14 +63,14 @@ include('functions.php');
     </div>
     <div class="form0">
         <form action="sign_up.php" class="form1">
-            <fieldset>
-                <div class="btn1"><button>sign_up</button></div>
-            </fieldset>
+
+            <div class="btn1"><button>sign_up</button></div>
+
         </form>
         <form action="log_in.php" class="form2">
-            <fieldset>
-                <div><button class="btn2">log_in</button></div>
-            </fieldset>
+
+            <div><button class="btn2">log_in</button></div>
+
         </form>
     </div>
     <div class="contact">

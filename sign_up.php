@@ -28,8 +28,8 @@
         }
 
         .form {
-            border: solid;
-            padding: 10px;
+            border: solid 1px;
+            padding: 30px;
             margin: 10px;
             height: 400px;
             display: flex;
@@ -64,7 +64,7 @@
             display: flex;
             justify-content: space-evenly;
             align-items: center;
-            margin-top: 50px;
+            margin-top: 30px;
         }
 
         .date {
@@ -77,9 +77,9 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            font-size: 25px;
+            font-size: 20px;
             position: absolute;
-            top: 125px;
+            top: 95px;
             right: 1px;
 
         }

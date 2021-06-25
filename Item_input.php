@@ -43,7 +43,12 @@ if ($status == false) {
     .登録 {
       display: flex;
       justify-content: center;
-      margin: 30px;
+      margin: 40px;
+
+    }
+
+    .form {
+      font-size: 20px;
     }
   </style>
 </head>
@@ -72,22 +77,25 @@ if ($status == false) {
   <form action="create_item.php" method="POST" enctype="multipart/form-data" class="出品フォーム">
     <fieldset>
       <legend class="アイテム見出し">アイテム登録画面</legend>
-      <div>
-        アイテム: <input type="text" name="item_name">
-      </div>
-      <div>
-        サイズ: <input type="text" name="size">
-      </div>
-      <div>
-        メーカー: <input type="text" name="maker">
-      </div>
-      <div>
-        image: <input type="file" name="image" accept="image/*" capture="camera">
-      </div>
-      <div class="登録">
-        <button>登録</button>
+      <div class="form">
+        <div>
+          アイテム: <input type="text" name="item_name">
+        </div>
+        <div>
+          サイズ: <input type="text" name="size">
+        </div>
+        <div>
+          メーカー: <input type="text" name="maker">
+        </div>
+        <div>
+          image: <input type="file" name="image" accept="image/*" capture="camera">
+        </div>
       </div>
     </fieldset>
+    <div class="登録">
+      <button>登録</button>
+    </div>
+
   </form>
 
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

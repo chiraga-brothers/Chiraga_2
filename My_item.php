@@ -79,6 +79,12 @@ if ($status == false) {
     <a href="log_out.php" class="menu__item">ログアウト</a>
   </div>
 
+  <div>
+    <h1>ホリマニア</h1>
+  </div>
+  <div>
+    <h2>出品リスト</h2>
+  </div>
   <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
   <fieldset>
     <legend>自分の出品商品 詳細</legend>

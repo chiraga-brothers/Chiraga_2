@@ -92,7 +92,7 @@ if ($status == false) {
     }
 
     .form2 {
-      margin-top: 10px;
+      margin-top: 30px;
     }
 
     .ヘッダー {
