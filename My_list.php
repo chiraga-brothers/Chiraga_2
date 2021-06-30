@@ -88,24 +88,8 @@ if ($status == false) {
     <h2>マイリスト</h2>
   </div>
   <a href="My_account.php"><img src="<?= $user_image ?>" height=150px></a>
-  <fieldset>
-    <legend class="マイリスト">自分の出品商品 一覧</legend>
-    <table>
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>メーカー</th>
-          <th>サイズ</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?= $output ?>
-      </tbody>
-    </table>
-  </fieldset>
+  <legend class="マイリスト">自分の出品商品 一覧</legend>
+  <?= $output ?>
 
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <script>

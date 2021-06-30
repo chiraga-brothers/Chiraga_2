@@ -40,7 +40,7 @@ if ($status == false) {
     .user {
       margin-left: 220px;
       position: absolute;
-      top: 98px;
+      top: 130px;
       left: 10px;
       font-size: 15px;
     }
